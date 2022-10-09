@@ -5,10 +5,30 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #FFFFFF;
-	background: rgb(91, 91, 91);
-	text-shadow: rgb(66, 62, 62) 0px 0px 5px, rgb(77, 74, 74) 0px 0px 10px, #FFF 0px 0px 15px, #ffffff 0px 0px 20px, #ffffff 0px 0px 30px, #757575 0px 0px 40px, #777777 0px 0px 50px, #f9007d 0px 0px 75px;
-	color: #000000;
-	background: #323131;
+	background: rgb(255, 255, 255);
+	text-shadow: rgb(144, 144, 144) 0px 0px 2px, rgb(0, 0, 0) 0px 0px 3px, rgb(13, 125, 173) 0px 0px 15px, #ffffff 0px 0px 3px, #ffffff 0px 0px 10px, #757575 0px 0px 40px, #777777 0px 0px 10px, #f9007d 0px 0px 15px;
+	color: #040242;
+	background: #02042a;
+
+	/* unvisited link */
+	a:link {
+		color: rgb(0, 0, 0);
+	}
+
+	/* visited link */
+	a:visited {
+		color: rgb(0, 0, 0);
+	}
+
+	/* mouse over link */
+	a:hover {
+		color: rgb(235, 9, 9);
+	}
+
+	/* selected link */
+	a:active {
+		color: rgb(10, 160, 240);
+	}
 }
 
 code {
@@ -31,14 +51,15 @@ code {
 	padding: 16px 31px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #f40909;
-    .myButton:hover {
-        background-color: transparent;
-    }
-    
-    .myButton:active {
-        position: relative;
-        top: 1px;
-    }
+
+	.myButton:hover {
+		background-color: transparent;
+	}
+
+	.myButton:active {
+		position: relative;
+		top: 1px;
+	}
 }
 
 
@@ -57,14 +78,14 @@ code {
 	text-shadow: rgb(66, 62, 62) 0px 0px 5px, rgb(77, 74, 74) 0px 0px 10px, #FFF 0px 0px 15px, #ffffff 0px 0px 20px, #ffffff 0px 0px 30px, #757575 0px 0px 40px, #777777 0px 0px 50px, #f9007d 0px 0px 75px;
 	color: #ff0000;
 
-    .myButton:hover {
-        background-color: transparent;
-    }
-    
-    .myButton:active {
-        position: relative;
-        top: 1px;
-    }
+	.myButton:hover {
+		background-color: transparent;
+	}
+
+	.myButton:active {
+		position: relative;
+		top: 1px;
+	}
 }
 
 
@@ -81,14 +102,14 @@ code {
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #02bbe9;
 
-    .myButton:hover {
-        background-color: transparent;
-    }
-    
-    .myButton:active {
-        position: relative;
-        top: 1px;
-    }
+	.myButton:hover {
+		background-color: transparent;
+	}
+
+	.myButton:active {
+		position: relative;
+		top: 1px;
+	}
 }
 
 
@@ -113,18 +134,19 @@ code {
 }
 
 #menu {
-	color: #ffffff;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
 	width: 100%;
-	background-color: rgb(163, 163, 163);
+	background-color: rgb(0, 0, 0);
 	border-bottom-style: solid;
-	border-bottom-color: #ffffff;
+	border-bottom-color: #053044;
 	border-bottom-width: 1px;
 	height: 40px;
-	color: white;
+	text-decoration: none;
+	color: #2586a7;
+	color: #000000;
 
 }
 
@@ -147,7 +169,7 @@ code {
 }
 
 #gifhome {
-	margin-top: 200px;
+	margin-top: 270px;
 	width: 300px;
 }
 
@@ -164,14 +186,14 @@ code {
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #030303;
 	text-shadow: rgb(66, 62, 62) 0px 0px 5px, rgb(77, 74, 74) 0px 0px 10px, #FFF 0px 0px 15px, #ffffff 0px 0px 20px, #ffffff 0px 0px 30px, #757575 0px 0px 40px, #777777 0px 0px 50px, #f9007d 0px 0px 75px;
-	color: #ffffff;
-	padding-bottom: 330px;
+	color: #010101;
+	padding-bottom: 400px;
 }
 
 #hbutton {
 	background-color: transparent;
 	border-radius: 10px;
-	border: 1px solid #ffffff;
+	border: 1px solid #4c4c4c;
 	display: inline-block;
 	color: #0534f1;
 	font-family: Arial;
@@ -180,7 +202,7 @@ code {
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #0808de;
 	text-shadow: rgb(66, 62, 62) 0px 0px 5px, rgb(77, 74, 74) 0px 0px 10px, #FFF 0px 0px 15px, #ffffff 0px 0px 20px, #ffffff 0px 0px 30px, #757575 0px 0px 40px, #777777 0px 0px 50px, #f9007d 0px 0px 75px;
-	color: #FFFFFF;
+	color: #060606;
 }
 
 
@@ -188,11 +210,11 @@ code {
 	font-size: smaller;
 	color: #FFFFFF;
 	text-shadow: 0 0 10px #FFFFFF;
-	
+
 
 }
 
-#pokem{
+#pokem {
 	color: #ffffff;
 	display: flex;
 	flex-direction: column;
@@ -259,4 +281,12 @@ code {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+#backgro{
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #999;
 }

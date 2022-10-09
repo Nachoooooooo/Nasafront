@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function Altapokemon() {
+function AltaPokemons() {
 
   const [values, setValues] = useState({
     name: '',
@@ -34,7 +34,7 @@ function Altapokemon() {
 
   return (
     <section className="pokem">
-    <h1>Altapokemon</h1>
+    <h1>AltaPokemons</h1>
     <h3>Datos del Pokemon:</h3>
       <form  id="pokem" onSubmit={handleSubmit}>
       <label htmlFor="name">Nombre</label>
@@ -55,4 +55,4 @@ function Altapokemon() {
   )
 }
 
-export default Altapokemon
+export default AltaPokemons

@@ -1,1 +1,1 @@
-export { default } from "./Altapokemon";
+export { default } from "./AltaPokemons";

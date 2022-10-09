@@ -8,9 +8,8 @@ class Nav extends Component {
     return <nav>
       <div id="menu">
         <Link to="/">HOME</Link>
-        <Link to="/pokemons">POKEMONS</Link>
-        <Link to="/altapokemons">ALTA</Link>
-
+        <Link to="/neas">NEAS</Link>
+        <Link to="/asteroides">ASTEROIDES</Link>
       </div>
     </nav>;
   }

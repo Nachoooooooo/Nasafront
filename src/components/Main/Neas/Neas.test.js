@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AltaPokemons from "./AltaPokemons";
+import Neas from "./Neas";
 
-describe("AltaPokemons", () => {
+describe("Neas", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<AltaPokemons />);
+    const wrapper = shallow(<Neas />);
     expect(wrapper).toMatchSnapshot();
   });
 });
