@@ -15,7 +15,7 @@ export class Main extends Component {
         <Route element={<Home />} path={"/"} />
         <Route element={<NotFound />} path={"/*"} />
         <Route element={<Neas itemsPerPage={10} />} path={"/neas"} />
-        <Route element={<Asteroides />} path={"/asteroides"} />
+        <Route element={<Asteroides itemsPerPage={10} />} path={"/asteroides"} />
       </Routes>
     </main>
     )

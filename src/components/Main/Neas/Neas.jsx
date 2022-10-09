@@ -32,8 +32,8 @@ function Neas({ itemsPerPage }) {
     return (
       <>
         {currentItems &&
-          currentItems.map((item) => (
-            <div id="po">
+          currentItems.map((item, i) => (
+            <div id="po" key={i}>
               <li>
                 <br />
                 DESIGNATION: {item.designation}

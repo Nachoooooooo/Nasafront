@@ -31,8 +31,8 @@ function Asteroids({ itemsPerPage }) {
     return (
       <>
         {currentItems &&
-          currentItems.map((item) => (
-            <div id="po">
+          currentItems.map((item, i) => (
+            <div id="po" key={i}>
               <li>
                 <br />
                 name: {item.name}
@@ -53,14 +53,14 @@ function Asteroids({ itemsPerPage }) {
                 <br />
                 reclong: {item.reclong}
                 <br />
-                geolocation: {item.geolocation}
-
+                geolocation: latitude {item.geolocation.latitude}, longitude {item.geolocation.longitude}
+                <br />
                 <button id="borrar-button" onClick={() => {
                   axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${item.designation}`)
                     .then(() => {
                       loadDataAsteroids()
                       alert(`Asteroid Deleted: ${item._id}`)
-                      
+
                     })
 
                 }}>DELETE</button>
@@ -120,29 +120,28 @@ function Asteroids({ itemsPerPage }) {
       <h1>Asteroids</h1>
       <h3>Datos del Asteroide:</h3>
       <form id="po" onSubmit={handleSubmit}>
-        <label htmlFor="designation">Designation</label>
-        <input name="designation" type="text" onChange={handleChange}></input>
-        <label htmlFor="discovery_date">discovery_date</label>
-        <input name="discovery_date" type="text" onChange={handleChange}></input>
-        <label htmlFor="h_mag">h_mag</label>
-        <input name="h_mag" type="text" onChange={handleChange}></input>
-        <label htmlFor="moid_au">moid_au</label>
-        <input name="moid_au" type="text" onChange={handleChange}></input>
-        <label htmlFor="q_au_1">q_au_1</label>
-        <input name="q_au_1" type="text" onChange={handleChange}></input>
-        <label htmlFor="q_au_2">q_au_2</label>
-        <input name="q_au_2" type="text" onChange={handleChange}></input>
-        <label htmlFor="period_yr">period_yr</label>
-        <input name="period_yr" type="text" onChange={handleChange}></input>
-        <label htmlFor="i_deg">i_deg</label>
-        <input name="i_deg" type="text" onChange={handleChange}></input>
-        <label htmlFor="pha">pha</label>
-        <input name="pha" type="text" onChange={handleChange}></input>
-        <label htmlFor="orbit_class">orbit_class</label>
-        <input name="orbit_class" type="text" onChange={handleChange}></input>
+        <label htmlFor="name">name</label>
+        <input name="name" type="text" onChange={handleChange}></input>
+        <label htmlFor="id">id</label>
+        <input name="id" type="text" onChange={handleChange}></input>
+        <label htmlFor="nametype">nametype</label>
+        <input name="nametype" type="text" onChange={handleChange}></input>
+        <label htmlFor="recclass">recclass</label>
+        <input name="recclass" type="text" onChange={handleChange}></input>
+        <label htmlFor="mass">mass</label>
+        <input name="mass" type="text" onChange={handleChange}></input>
+        <label htmlFor="fall">fall</label>
+        <input name="fall" type="text" onChange={handleChange}></input>
+        <label htmlFor="year">year</label>
+        <input name="year" type="text" onChange={handleChange}></input>
+        <label htmlFor="reclat">reclat</label>
+        <input name="reclat" type="text" onChange={handleChange}></input>
+        <label htmlFor="reclong">reclong</label>
+        <input name="reclong" type="text" onChange={handleChange}></input>
+        <label htmlFor="geolocation">geolocation</label>
+        <input name="geolocation" type="text" onChange={handleChange}></input>
         <button type="submit" id="dbutton">SUBMIT ASTEROID</button>
       </form>
-
       <ul>
 
         <Items currentItems={currentItems} />
@@ -160,7 +159,7 @@ function Asteroids({ itemsPerPage }) {
         renderOnZeroPageCount={null}
       />
 
-     
+
 
 
     </section>
