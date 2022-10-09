@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 
-function AltaNeas() {
+
+function Neas({ itemsPerPage }) {
 
   const [values, setValues] = useState({
     designation: '',
@@ -17,17 +19,85 @@ function AltaNeas() {
   });
 
   const [dataNeas, setDataNeas] = useState([])
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  async function loadDataNeas() {
+    let res = await axios.get("https://nasaapinacholopez.herokuapp.com/api/astronomy/neas?to=2022")
+    let data = res.data
+    setDataNeas(data)
+  }
+
+  function Items({ currentItems }) {
+    return (
+      <>
+        {currentItems &&
+          currentItems.map((item) => (
+            <div id="po">
+              <li>
+                <br />
+                DESIGNATION: {item.designation}
+                <br />
+                DISCOVERY DATE: {item.discovery_date}h_mag
+                <br />
+                h_mag: {item.h_mag}
+                <br />
+                moid_au: {item.moid_au}
+                <br />
+                q_au_1: {item.q_au_1}
+                <br />
+                q_au_2: {item.q_au_2}
+                <br />
+                period_yr: {item.period_yr}
+                <br />
+                i_deg: {item.i_deg}
+                <br />
+                pha: {item.pha}
+                <br />
+                orbit_class: {item.orbit_class}
+                <div id="po">
+                <button id="borrar-button" onClick={() => {
+                  axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${item.designation}`)
+                    .then(() => {
+                      loadDataNeas()
+                      alert(`Nea Deleted: ${item._id}`)
+                      
+                    })
+
+                }}>DELETE</button>
+                </div>
+
+
+              </li>
+            </div>
+          ))}
+      </>
+    );
+  }
+
+
 
   useEffect(() => {
-    async function loadDataNeas() {
-      let res = await axios.get("https://nasaapinacholopez.herokuapp.com/api/astronomy/neas?to=2022")
-      let data = res.data
-      setDataNeas(data)
-    }
+
     loadDataNeas()
 
   }, [])
 
+  useEffect(() => {
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(dataNeas.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(dataNeas.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, dataNeas]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % dataNeas.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
 
 
   const handleChange = (e) => {
@@ -39,7 +109,7 @@ function AltaNeas() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-   
+
 
     axios.post("https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/create", values).then((res) => {
 
@@ -48,10 +118,10 @@ function AltaNeas() {
   }
 
   return (
-    <section className="pokem">
+    <section className="po">
       <h1>AltaNeas</h1>
       <h3>Datos del Nea:</h3>
-      <form id="pokem" onSubmit={handleSubmit}>
+      <form id="po" onSubmit={handleSubmit}>
         <label htmlFor="designation">Designation</label>
         <input name="designation" type="text" onChange={handleChange}></input>
         <label htmlFor="discovery_date">discovery_date</label>
@@ -72,51 +142,31 @@ function AltaNeas() {
         <input name="pha" type="text" onChange={handleChange}></input>
         <label htmlFor="orbit_class">orbit_class</label>
         <input name="orbit_class" type="text" onChange={handleChange}></input>
-
-
-
-
-        <button type="submit" id="dbutton">ALTA NEA</button>
+        <button type="submit" id="dbutton">SUBMIT NEA</button>
       </form>
 
-      <ul>
-        {
-          dataNeas.map(nea => (
+      <ul id="lista">
 
-            <li>
-
-              <br />
-              DESIGNATION: {nea.designation}
-              <br />
-              DISCOVERY DATE: {nea.discovery_date}h_mag
-              <br />
-              h_mag: {nea.h_mag}
-              <br />
-              moid_au: {nea.moid_au}
-              <br />
-              q_au_1: {nea.q_au_1}
-              <br />
-              q_au_2: {nea.q_au_2}
-              <br />
-              period_yr: {nea.period_yr}
-              <br />
-              i_deg: {nea.i_deg}
-              <br />
-              pha: {nea.pha}
-              <br />
-              orbit_class: {nea.orbit_class}
-             
-            </li>
-          ))
-        }
+        <Items currentItems={currentItems} />
 
 
       </ul>
 
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
+
+     
 
 
     </section>
   )
 }
 
-export default AltaNeas
+export default Neas
