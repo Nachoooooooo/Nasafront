@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
+import AsteroidesCard from './AsteroidesCard/AsteroidesCard';
 
 function Asteroids({ itemsPerPage }) {
 
@@ -25,6 +26,7 @@ function Asteroids({ itemsPerPage }) {
     let res = await axios.get("https://nasaapinacholopez.herokuapp.com/api/astronomy/landings?to=2022")
     let data = res.data
     setDataAsteroids(data)
+    console.log(dataAsteroids);
   }
 
   function Items({ currentItems }) {
@@ -32,42 +34,7 @@ function Asteroids({ itemsPerPage }) {
       <>
         {currentItems &&
           currentItems.map((item, i) => (
-            <div id="po" key={i}>
-              <li>
-                <br />
-                name: {item.name}
-                <br />
-                id: {item.id}
-                <br />
-                nametype: {item.nametype}
-                <br />
-                recclass: {item.recclass}
-                <br />
-                mass: {item.mass}
-                <br />
-                fall: {item.fall}
-                <br />
-                year: {item.year}
-                <br />
-                reclat: {item.reclat}
-                <br />
-                reclong: {item.reclong}
-                <br />
-                geolocation: latitude {item.geolocation.latitude}, longitude {item.geolocation.longitude}
-                <br />
-                <button id="borrar-button" onClick={() => {
-                  axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${item.designation}`)
-                    .then(() => {
-                      loadDataAsteroids()
-                      alert(`Asteroid Deleted: ${item._id}`)
-
-                    })
-
-                }}>DELETE</button>
-
-
-              </li>
-            </div>
+            <AsteroidesCard key={i} item={item} loadDataAsteroids={loadDataAsteroids}/>
           ))}
       </>
     );
@@ -76,9 +43,8 @@ function Asteroids({ itemsPerPage }) {
 
 
   useEffect(() => {
-
     loadDataAsteroids()
-
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {

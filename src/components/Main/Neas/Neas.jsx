@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
+import NeasCard from './NeasCard'
 
 
 function Neas({ itemsPerPage }) {
@@ -26,6 +27,7 @@ function Neas({ itemsPerPage }) {
     let res = await axios.get("https://nasaapinacholopez.herokuapp.com/api/astronomy/neas?to=2022")
     let data = res.data
     setDataNeas(data)
+    console.log(dataNeas);
   }
 
   function Items({ currentItems }) {
@@ -33,43 +35,7 @@ function Neas({ itemsPerPage }) {
       <>
         {currentItems &&
           currentItems.map((item, i) => (
-            <div id="po" key={i}>
-              <li>
-                <br />
-                DESIGNATION: {item.designation}
-                <br />
-                DISCOVERY DATE: {item.discovery_date}h_mag
-                <br />
-                h_mag: {item.h_mag}
-                <br />
-                moid_au: {item.moid_au}
-                <br />
-                q_au_1: {item.q_au_1}
-                <br />
-                q_au_2: {item.q_au_2}
-                <br />
-                period_yr: {item.period_yr}
-                <br />
-                i_deg: {item.i_deg}
-                <br />
-                pha: {item.pha}
-                <br />
-                orbit_class: {item.orbit_class}
-                <div id="po">
-                <button id="borrar-button" onClick={() => {
-                  axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${item.designation}`)
-                    .then(() => {
-                      loadDataNeas()
-                      alert(`Nea Deleted: ${item._id}`)
-                      
-                    })
-
-                }}>DELETE</button>
-                </div>
-
-
-              </li>
-            </div>
+            <NeasCard key={i} item={item} loadDataNeas={loadDataNeas}/>
           ))}
       </>
     );
@@ -79,8 +45,8 @@ function Neas({ itemsPerPage }) {
 
   useEffect(() => {
 
-    loadDataNeas()
-
+   loadDataNeas()
+// eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -156,7 +122,7 @@ function Neas({ itemsPerPage }) {
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
