@@ -28,7 +28,7 @@ const AsteroidesCard = (props) => {
               geolocation: latitude {props.item.geolocation.latitude}, longitude {props.item.geolocation.longitude}
               <br />
               <button id="borrar-button" onClick={() => {
-                axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${props.item.designation}`)
+                axios.delete(`https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/delete/${props.item._id}`)
                   .then(() => {
                     props.loadDataAsteroids()
                     alert(`Asteroid Deleted: ${props.item._id}`)
