@@ -118,7 +118,7 @@ function Neas({ itemsPerPage }) {
 
       </ul>
 
-      <ReactPaginate
+      <ReactPaginate className='paginacion'
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}

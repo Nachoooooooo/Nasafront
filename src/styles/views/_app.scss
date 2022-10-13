@@ -6,23 +6,21 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	color: #FFFFFF;
 	background: rgb(255, 255, 255);
-	text-shadow: rgb(144, 144, 144) 0px 0px 2px, rgb(0, 0, 0) 0px 0px 3px, rgb(13, 125, 173) 0px 0px 15px, #ffffff 0px 0px 3px, #ffffff 0px 0px 10px, #757575 0px 0px 40px, #777777 0px 0px 10px, #f9007d 0px 0px 15px;
-	color: #040242;
 	background: #02042a;
 
 	/* unvisited link */
 	a:link {
-		color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
 	}
 
 	/* visited link */
 	a:visited {
-		color: rgb(0, 0, 0);
+		color: rgb(10, 160, 240);
 	}
 
 	/* mouse over link */
 	a:hover {
-		color: rgb(235, 9, 9);
+		color: rgb(15, 49, 175);
 	}
 
 	/* selected link */
@@ -40,7 +38,7 @@ code {
 	width: 300px;
 }
 
-#borrar-button {
+.borrar-button {
 	background-color: transparent;
 	border-radius: 28px;
 	border: 1px solid #f40909;

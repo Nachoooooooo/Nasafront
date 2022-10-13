@@ -34,7 +34,7 @@ function Asteroids({ itemsPerPage }) {
       <>
         {currentItems &&
           currentItems.map((item, i) => (
-            <AsteroidesCard key={i} item={item} loadDataAsteroids={loadDataAsteroids}/>
+            <AsteroidesCard key={i} item={item} loadDataAsteroids={loadDataAsteroids} deleteAsteroide={deleteAsteroide} index={i}/>
           ))}
       </>
     );
@@ -74,12 +74,23 @@ function Asteroids({ itemsPerPage }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-
     axios.post("https://nasaapinacholopez.herokuapp.com/api/astronomy/neas/create", values).then((res) => {
 
       alert(`Asteroid OK: ${res.data._id}`)
     })
   }
+
+  const deleteAsteroide = (i) => {
+
+    setCurrentItems(currentItems.filter((asteroide, j) => i !== j))
+    alert(`Elemento ${i} borrado`)
+
+  }
+
+
+
+
+
 
   return (
     <section className="po">
@@ -115,7 +126,7 @@ function Asteroids({ itemsPerPage }) {
 
       </ul>
 
-      <ReactPaginate id="paginas"
+      <ReactPaginate className='paginacion'
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}

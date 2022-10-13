@@ -1,0 +1,36 @@
+@import '../utils/mixins.scss';
+
+.paginacion {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: center;
+}
+
+.asteroides-card {
+
+    display: flexbox;
+    align-items: center;
+    position: center;
+    border: solid 2px rgb(148, 215, 242);
+    padding: 25px 25px;
+    margin-right: 45px;
+
+    &__title {
+        color: antiquewhite;
+    
+    }
+
+    &__databox {
+
+        color: antiquewhite;
+
+        &>p {
+            color: antiquewhite;
+        }
+
+    }
+
+
+
+}
